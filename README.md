@@ -3,6 +3,7 @@
 
 * use python 3.7+
 * `pip install requirement.txt`
-* `python face_detect.py abba.png`
+* without visualization: `python face_detect.py abba.png true`
+* with visualization: `python face_detect.py abba.png false`
 
 
