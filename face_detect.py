@@ -1,10 +1,11 @@
 import cv2
 import sys
 
-if __name__ == '__main__':
+
+def main():
     # Get user supplied values
     imagePath = sys.argv[1]
-    visualise = sys.argv[2]
+    visualise = sys.argv[2] == 'true' or sys.argv[2] == 'True'
 
     cascPath = "haarcascade_frontalface_default.xml"
 
@@ -23,12 +24,18 @@ if __name__ == '__main__':
         minSize=(30, 30)
     )
 
-    print("Found {0} faces!".format(len(faces)))
-
-    # Draw a rectangle around the faces
-    for (x, y, w, h) in faces:
-        cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
+    print(f"Found {len(faces)} faces!")
 
     if visualise:
+        # Draw a rectangle around the faces
+        for (x, y, w, h) in faces:
+            cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
         cv2.imshow("Faces found", image)
         cv2.waitKey(0)
+
+    exit(0)
+
+
+if __name__ == '__main__':
+    main()
